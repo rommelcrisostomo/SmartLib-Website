@@ -7,7 +7,7 @@
     "category": "Software Engineering",
     "totalCopies": 3,
     "availableCopies": 3,
-    "coverImage": "assets/images/book-101.svg"
+    "coverImage": "Assets/Images/book-101.svg"
   },
   {
     "id": "BK-102",
@@ -17,7 +17,7 @@
     "category": "Computer Science",
     "totalCopies": 4,
     "availableCopies": 3,
-    "coverImage": "assets/images/book-102.svg"
+    "coverImage": "Assets/Images/book-102.svg"
   },
   {
     "id": "BK-103",
@@ -27,7 +27,7 @@
     "category": "Computer Science",
     "totalCopies": 2,
     "availableCopies": 2,
-    "coverImage": "assets/images/book-103.svg"
+    "coverImage": "Assets/Images/book-103.svg"
   },
   {
     "id": "BK-104",
@@ -37,7 +37,7 @@
     "category": "Information Systems",
     "totalCopies": 2,
     "availableCopies": 1,
-    "coverImage": "assets/images/book-104.svg"
+    "coverImage": "Assets/Images/book-104.svg"
   },
   {
     "id": "BK-105",
@@ -47,7 +47,7 @@
     "category": "Data Science",
     "totalCopies": 1,
     "availableCopies": 0,
-    "coverImage": "assets/images/book-105.svg"
+    "coverImage": "Assets/Images/book-105.svg"
   },
   {
     "id": "BK-106",
@@ -57,6 +57,6 @@
     "category": "General Fiction",
     "totalCopies": 3,
     "availableCopies": 3,
-    "coverImage": "assets/images/book-106.svg"
+    "coverImage": "Assets/Images/book-106.svg"
   }
 ]
