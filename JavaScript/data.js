@@ -1,8 +1,3 @@
-/**
- * js/data.js
- * Fictional sample book catalog with cover artwork paths and initial borrowing records.
- */
-
 const SAMPLE_BOOKS_JSON = [
   {
     id: "BK-101",
