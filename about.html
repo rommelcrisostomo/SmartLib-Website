@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About &amp; Help | LibriBloom</title>
+  <link rel="stylesheet" href="CSS/styles.css" />
+</head>
+<body data-page="about">
+  <div id="page-loader" class="page-loader" role="status" aria-live="polite">
+    <div class="loader-card">
+      <div class="cute-book-loader" aria-hidden="true">
+        <div class="book-cover"></div>
+        <div class="book-page"></div>
+        <div class="book-page page-2"></div>
+        <span class="loader-heart">&#9829;</span>
+      </div>
+      <p id="loader-text" class="loader-text">Turning the page...</p>
+      <p class="loader-sub">LibriBloom Library</p>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand nav-link" data-loader-label="Returning to Dashboard...">
+        <span class="brand-icon-wrap" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M5 4.5C5 3.67 5.67 3 6.5 3H19V19H6.5C5.67 19 5 19.67 5 20.5V4.5Z" fill="#FFFFFF" />
+            <path d="M5 20.5C5 19.67 5.67 19 6.5 19H19V21H6.5C5.67 21 5 20.33 5 20.5Z" fill="#FBCFE8" />
+          </svg>
+        </span>
+        <div>
+          <span class="brand-title">LibriBloom</span>
+          <span class="brand-tag">Curated Library Studio</span>
+        </div>
+      </a>
+
+      <button type="button" id="mobile-menu-btn" class="mobile-menu-btn" aria-expanded="false" aria-controls="primary-nav">
+        &#9776; Menu
+      </button>
+
+      <nav id="primary-nav" class="primary-nav" aria-label="Main navigation">
+        <a href="index.html" class="nav-link" data-loader-label="Opening Dashboard...">Dashboard</a>
+        <a href="catalog.html" class="nav-link" data-loader-label="Browsing Book Catalog...">Book Catalog</a>
+        <a href="borrow.html" class="nav-link" data-loader-label="Opening Borrow Form...">Borrow Book</a>
+        <a href="receipt.html" class="nav-link" data-loader-label="Loading Receipt Summary...">Receipt</a>
+        <a href="records.html" class="nav-link" data-loader-label="Opening Saved Records...">Records</a>
+        <a href="about.html" class="nav-link active" data-loader-label="Opening About & Help...">About &amp; Help</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container main-content">
+    <div class="page-header">
+      <div>
+        <span class="page-eyebrow">System Guide</span>
+        <h1>About LibriBloom &amp; User Help</h1>
+        <p class="page-desc">Step-by-step instructions, enforced business rules, and front-end prototype scope notes.</p>
+      </div>
+    </div>
+
+    <div class="curator-spotlight" style="margin-top: 0; margin-bottom: 1.5rem;">
+      <img
+        src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=700&q=80"
+        alt="Rows of curated books in a cozy boutique library"
+        onerror="this.src='Assets/Images/book-101.svg'"
+      />
+      <div>
+        <span class="page-eyebrow">About the Studio</span>
+        <h2 style="margin: 0.35rem 0;">Where Warm Aesthetics Meet Smart Circulation</h2>
+        <p style="margin: 0; color: var(--color-text-muted);">
+          Built as a responsive front-end prototype using semantic HTML5, CSS3, JavaScript, <code>localStorage</code>, and JSON, LibriBloom delivers a welcoming boutique library workflow across desktop, tablet, and mobile screens.
+        </p>
+      </div>
+    </div>
+
+    <div class="about-grid">
+      <article class="card">
+        <h2>How to Complete a Borrow Workflow</h2>
+        <ol class="help-steps">
+          <li><strong>Browse Catalog:</strong> Filter books by category or shelf status on the <em>Book Catalog</em> page and click <em>Borrow Book</em>.</li>
+          <li><strong>Enter Valid Borrower Info:</strong> Provide a full first and last name separated by a space, a valid Student/Library ID (<code>YYYY-XXXX</code>), and a legitimate email (<code>@gmail.com</code>, <code>@yahoo.com</code>, etc.).</li>
+          <li><strong>Review &amp; Print Receipt:</strong> Confirming generates a unique reference code (<code>LIB-2026-XXXX</code>) and opens the printable <em>Receipt</em> page.</li>
+          <li><strong>Manage &amp; Edit Records:</strong> Visit <em>Records</em> to edit borrower info, print official circulation slips, mark books as <em>Returned</em>, extend due dates, or <em>Cancel/Delete</em> records.</li>
+        </ol>
+      </article>
+
+      <article class="card">
+        <h2>Prototype Scope &amp; Limitations</h2>
+        <ul class="help-steps">
+          <li><strong>Browser-Local Storage:</strong> All books and transaction records are saved in your browser's <code>localStorage</code> and persist across page refreshes on this device[cite: 1].</li>
+          <li><strong>Simulated Notifications:</strong> Email due-date alerts and ID verification are simulated for front-end demonstration[cite: 1].</li>
+          <li><strong>Portable JSON Backup:</strong> Use <em>Export JSON</em> on the Records page to download a backup file, or <em>Import JSON</em> to restore valid records[cite: 1].</li>
+        </ul>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>LibriBloom &mdash; Curated Library Management Prototype (HTML5, CSS3, JavaScript, localStorage &amp; JSON).</p>
+    </div>
+  </footer>
+
+  <script src="JavaScript/data.js"></script>
+  <script src="JavaScript/storage.js"></script>
+  <script src="JavaScript/validation.js"></script>
+  <script src="JavaScript/app.js"></script>
+</body>
+</html>

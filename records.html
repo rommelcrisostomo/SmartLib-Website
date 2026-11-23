@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Borrowing Records | LibriBloom</title>
+  <link rel="stylesheet" href="CSS/styles.css" />
+</head>
+<body data-page="records">
+  <div id="page-loader" class="page-loader" role="status" aria-live="polite">
+    <div class="loader-card">
+      <div class="cute-book-loader" aria-hidden="true">
+        <div class="book-cover"></div>
+        <div class="book-page"></div>
+        <div class="book-page page-2"></div>
+        <span class="loader-heart">&#9829;</span>
+      </div>
+      <p id="loader-text" class="loader-text">Turning the page...</p>
+      <p class="loader-sub">LibriBloom Library</p>
+    </div>
+  </div>
+
+  <div id="toast-banner" class="toast-banner" role="status" aria-live="polite" hidden></div>
+
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand nav-link" data-loader-label="Returning to Dashboard...">
+        <span class="brand-icon-wrap" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M5 4.5C5 3.67 5.67 3 6.5 3H19V19H6.5C5.67 19 5 19.67 5 20.5V4.5Z" fill="#FFFFFF" />
+            <path d="M5 20.5C5 19.67 5.67 19 6.5 19H19V21H6.5C5.67 21 5 20.33 5 20.5Z" fill="#FBCFE8" />
+          </svg>
+        </span>
+        <div>
+          <span class="brand-title">LibriBloom</span>
+          <span class="brand-tag">Curated Library Studio</span>
+        </div>
+      </a>
+
+      <button type="button" id="mobile-menu-btn" class="mobile-menu-btn" aria-expanded="false" aria-controls="primary-nav">
+        &#9776; Menu
+      </button>
+
+      <nav id="primary-nav" class="primary-nav" aria-label="Main navigation">
+        <a href="index.html" class="nav-link" data-loader-label="Opening Dashboard...">Dashboard</a>
+        <a href="catalog.html" class="nav-link" data-loader-label="Browsing Book Catalog...">Book Catalog</a>
+        <a href="borrow.html" class="nav-link" data-loader-label="Opening Borrow Form...">Borrow Book</a>
+        <a href="receipt.html" class="nav-link" data-loader-label="Loading Receipt Summary...">Receipt</a>
+        <a href="records.html" class="nav-link active" data-loader-label="Opening Saved Records...">Records</a>
+        <a href="about.html" class="nav-link" data-loader-label="Opening About & Help...">About &amp; Help</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container main-content">
+    <div class="page-header">
+      <div>
+        <span class="page-eyebrow">Circulation Log</span>
+        <h1>Borrowing Records Management</h1>
+        <p class="page-desc">Search, filter, edit borrower info with instant table updates, print receipts, or manage returns.</p>
+      </div>
+
+      <div class="data-tools">
+        <button type="button" id="export-json-btn" class="btn btn-outline btn-sm">Export JSON</button>
+        <label for="import-json-input" class="btn btn-outline btn-sm" style="cursor: pointer;">
+          Import JSON
+          <input type="file" id="import-json-input" accept=".json,application/json" hidden />
+        </label>
+        <button type="button" id="reset-demo-btn" class="btn btn-danger-outline btn-sm">Reset Sample Data</button>
+      </div>
+    </div>
+
+    <div class="filter-bar" style="grid-template-columns: 2fr 1fr;">
+      <div class="filter-group">
+        <label for="records-search">Search Records</label>
+        <input type="search" id="records-search" placeholder="Search by Ref #, Borrower Name, ID, or Book Title..." />
+      </div>
+      <div class="filter-group">
+        <label for="records-status-filter">Filter by Status</label>
+        <select id="records-status-filter">
+          <option value="ALL">All Statuses</option>
+          <option value="Borrowed">Borrowed (Active)</option>
+          <option value="Returned">Returned</option>
+          <option value="Cancelled">Cancelled</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="table-wrapper card">
+      <table class="records-table">
+        <thead>
+          <tr>
+            <th>Ref #</th>
+            <th>Book Title</th>
+            <th>Borrower</th>
+            <th>Borrow Date</th>
+            <th>Due Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="records-tbody"></tbody>
+      </table>
+      <div id="records-empty" class="empty-state" hidden>
+        <p>No borrowing records match your search or status filter.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Edit Borrower Information Modal -->
+  <div id="edit-record-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="edit-modal-title" hidden>
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <span class="page-eyebrow">Update Borrower Record</span>
+          <h2 id="edit-modal-title">Edit Borrower Information</h2>
+        </div>
+        <button type="button" id="close-edit-modal-btn" class="modal-close-btn" aria-label="Close edit dialog">&times;</button>
+      </div>
+
+      <div id="edit-record-summary" class="modal-record-summary"></div>
+
+      <form id="edit-record-form" novalidate>
+        <input type="hidden" id="edit-ref-number" />
+
+        <div id="edit-form-feedback" class="alert-box" role="alert" hidden></div>
+
+        <div class="form-group">
+          <label for="edit-borrower-name">Borrower Full Name (First &amp; Last Name) <span class="req">*</span></label>
+          <input
+            type="text"
+            id="edit-borrower-name"
+            placeholder="e.g., Camille Santos"
+            required
+            aria-describedby="err-edit-borrower-name"
+          />
+          <span id="err-edit-borrower-name" class="field-error" aria-live="polite"></span>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="edit-borrower-id">Student / Library ID <span class="req">*</span></label>
+            <input
+              type="text"
+              id="edit-borrower-id"
+              placeholder="Format: YYYY-XXXX"
+              required
+              aria-describedby="err-edit-borrower-id"
+            />
+            <span id="err-edit-borrower-id" class="field-error" aria-live="polite"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="edit-borrower-email">Email Address <span class="req">*</span></label>
+            <input
+              type="email"
+              id="edit-borrower-email"
+              placeholder="e.g., camille.santos@gmail.com"
+              required
+              aria-describedby="err-edit-borrower-email"
+            />
+            <span id="err-edit-borrower-email" class="field-error" aria-live="polite"></span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="edit-borrower-notes">Purpose / Remarks (Optional)</label>
+          <input
+            type="text"
+            id="edit-borrower-notes"
+            placeholder="e.g., Updated contact or capstone notes"
+            maxlength="120"
+          />
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+          <button type="button" id="cancel-edit-modal-btn" class="btn btn-outline">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>LibriBloom &mdash; Curated Library Management Prototype (HTML5, CSS3, JavaScript, localStorage &amp; JSON).</p>
+    </div>
+  </footer>
+
+  <script src="JavaScript/data.js"></script>
+  <script src="JavaScript/storage.js"></script>
+  <script src="JavaScript/validation.js"></script>
+  <script src="JavaScript/app.js"></script>
+</body>
+</html>

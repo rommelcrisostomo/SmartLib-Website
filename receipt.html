@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Transaction Receipt | LibriBloom</title>
+  <link rel="stylesheet" href="CSS/styles.css" />
+</head>
+<body data-page="receipt">
+  <div id="page-loader" class="page-loader" role="status" aria-live="polite">
+    <div class="loader-card">
+      <div class="cute-book-loader" aria-hidden="true">
+        <div class="book-cover"></div>
+        <div class="book-page"></div>
+        <div class="book-page page-2"></div>
+        <span class="loader-heart">&#9829;</span>
+      </div>
+      <p id="loader-text" class="loader-text">Turning the page...</p>
+      <p class="loader-sub">LibriBloom Library</p>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand nav-link" data-loader-label="Returning to Dashboard...">
+        <span class="brand-icon-wrap" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M5 4.5C5 3.67 5.67 3 6.5 3H19V19H6.5C5.67 19 5 19.67 5 20.5V4.5Z" fill="#FFFFFF" />
+            <path d="M5 20.5C5 19.67 5.67 19 6.5 19H19V21H6.5C5.67 21 5 20.33 5 20.5Z" fill="#FBCFE8" />
+          </svg>
+        </span>
+        <div>
+          <span class="brand-title">LibriBloom</span>
+          <span class="brand-tag">Curated Library Studio</span>
+        </div>
+      </a>
+
+      <button type="button" id="mobile-menu-btn" class="mobile-menu-btn" aria-expanded="false" aria-controls="primary-nav">
+        &#9776; Menu
+      </button>
+
+      <nav id="primary-nav" class="primary-nav" aria-label="Main navigation">
+        <a href="index.html" class="nav-link" data-loader-label="Opening Dashboard...">Dashboard</a>
+        <a href="catalog.html" class="nav-link" data-loader-label="Browsing Book Catalog...">Book Catalog</a>
+        <a href="borrow.html" class="nav-link" data-loader-label="Opening Borrow Form...">Borrow Book</a>
+        <a href="receipt.html" class="nav-link active" data-loader-label="Loading Receipt Summary...">Receipt</a>
+        <a href="records.html" class="nav-link" data-loader-label="Opening Saved Records...">Records</a>
+        <a href="about.html" class="nav-link" data-loader-label="Opening About & Help...">About &amp; Help</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container main-content">
+    <div class="page-header">
+      <div>
+        <span class="page-eyebrow">Official Checkout Slip</span>
+        <h1>Transaction Confirmation &amp; Receipt</h1>
+        <p class="page-desc">Review your borrowing reference number, due date, and printable circulation slip.</p>
+      </div>
+
+      <div class="receipt-toolbar">
+        <label for="receipt-switcher" style="font-weight: 700; font-size: 0.88rem;">Switch Receipt:</label>
+        <select id="receipt-switcher" style="min-width: 260px;"></select>
+      </div>
+    </div>
+
+    <div id="receipt-empty" class="card empty-state" hidden>
+      <p>No borrowing transactions exist yet. Visit the <a href="borrow.html" class="transition-link">Borrow Book</a> page to create one.</p>
+    </div>
+
+    <article id="receipt-card" class="card receipt-card" hidden>
+      <div class="receipt-top">
+        <div>
+          <span class="receipt-label">Transaction Reference Number</span>
+          <h2 id="rec-ref" class="receipt-ref">LIB-2026-0000</h2>
+        </div>
+        <span id="rec-status" class="status-badge status-borrowed">Borrowed</span>
+      </div>
+
+      <div class="receipt-visual-header">
+        <img id="rec-book-cover" src="Assets/Images/book-101.svg" alt="Borrowed book cover" class="receipt-book-thumb" />
+        <div>
+          <span class="category-tag">Verified Circulation Copy</span>
+          <p style="margin: 0.35rem 0 0; font-size: 0.92rem; color: var(--color-text-muted);">
+            Present this digital slip or reference code at the LibriBloom desk when returning your book.
+          </p>
+        </div>
+        <div class="library-stamp" aria-hidden="true">LIBRIBLOOM<br/>APPROVED<br/>&#9829; 2026</div>
+      </div>
+
+      <dl class="receipt-grid">
+        <div>
+          <dt>Book Title &amp; ISBN</dt>
+          <dd id="rec-book">-</dd>
+        </div>
+        <div>
+          <dt>Borrower Full Name</dt>
+          <dd id="rec-borrower">-</dd>
+        </div>
+        <div>
+          <dt>Student / Library ID</dt>
+          <dd id="rec-id">-</dd>
+        </div>
+        <div>
+          <dt>Notification Email (Simulated)</dt>
+          <dd id="rec-email">-</dd>
+        </div>
+        <div>
+          <dt>Borrow Date</dt>
+          <dd id="rec-borrow-date">-</dd>
+        </div>
+        <div>
+          <dt>Return Due Date &amp; Duration</dt>
+          <dd id="rec-due-date">-</dd>
+        </div>
+        <div class="full-span">
+          <dt>Remarks / Notes</dt>
+          <dd id="rec-notes">None</dd>
+        </div>
+      </dl>
+
+      <div class="receipt-footer">
+        <span class="simulated-note">&#9829; Simulated email reminder scheduled for borrower. Please return on or before the due date.</span>
+        <div class="action-group">
+          <a href="records.html" class="btn btn-outline btn-sm transition-link" data-loader-label="Opening Records...">All Records</a>
+          <button type="button" id="print-receipt-btn" class="btn btn-primary btn-sm">Print Receipt</button>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>LibriBloom &mdash; Curated Library Management Prototype (HTML5, CSS3, JavaScript, localStorage &amp; JSON).</p>
+    </div>
+  </footer>
+
+  <script src="JavaScript/data.js"></script>
+  <script src="JavaScript/storage.js"></script>
+  <script src="JavaScript/validation.js"></script>
+  <script src="JavaScript/app.js"></script>
+</body>
+</html>

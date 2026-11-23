@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Borrow Book | LibriBloom</title>
+  <link rel="stylesheet" href="CSS/styles.css" />
+</head>
+<body data-page="borrow">
+  <div id="page-loader" class="page-loader" role="status" aria-live="polite">
+    <div class="loader-card">
+      <div class="cute-book-loader" aria-hidden="true">
+        <div class="book-cover"></div>
+        <div class="book-page"></div>
+        <div class="book-page page-2"></div>
+        <span class="loader-heart">&#9829;</span>
+      </div>
+      <p id="loader-text" class="loader-text">Turning the page...</p>
+      <p class="loader-sub">LibriBloom Library</p>
+    </div>
+  </div>
+
+  <div id="toast-banner" class="toast-banner" role="status" aria-live="polite" hidden></div>
+
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand nav-link" data-loader-label="Returning to Dashboard...">
+        <span class="brand-icon-wrap" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M5 4.5C5 3.67 5.67 3 6.5 3H19V19H6.5C5.67 19 5 19.67 5 20.5V4.5Z" fill="#FFFFFF" />
+            <path d="M5 20.5C5 19.67 5.67 19 6.5 19H19V21H6.5C5.67 21 5 20.33 5 20.5Z" fill="#FBCFE8" />
+          </svg>
+        </span>
+        <div>
+          <span class="brand-title">LibriBloom</span>
+          <span class="brand-tag">Curated Library Studio</span>
+        </div>
+      </a>
+
+      <button type="button" id="mobile-menu-btn" class="mobile-menu-btn" aria-expanded="false" aria-controls="primary-nav">
+        &#9776; Menu
+      </button>
+
+      <nav id="primary-nav" class="primary-nav" aria-label="Main navigation">
+        <a href="index.html" class="nav-link" data-loader-label="Opening Dashboard...">Dashboard</a>
+        <a href="catalog.html" class="nav-link" data-loader-label="Browsing Book Catalog...">Book Catalog</a>
+        <a href="borrow.html" class="nav-link active" data-loader-label="Opening Borrow Form...">Borrow Book</a>
+        <a href="receipt.html" class="nav-link" data-loader-label="Loading Receipt Summary...">Receipt</a>
+        <a href="records.html" class="nav-link" data-loader-label="Opening Saved Records...">Records</a>
+        <a href="about.html" class="nav-link" data-loader-label="Opening About & Help...">About &amp; Help</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container main-content">
+    <div class="page-header">
+      <div>
+        <span class="page-eyebrow">Circulation Checkout</span>
+        <h1>Book Borrowing Request Form</h1>
+        <p class="page-desc">Enter your complete full name (first and last name), ID, and valid email address to generate a receipt.</p>
+      </div>
+    </div>
+
+    <div class="two-col-layout">
+      <form id="borrow-form" class="card" novalidate>
+        <div id="form-feedback" class="alert-box" role="alert" hidden></div>
+
+        <div class="form-group">
+          <label for="book-select">Select Book <span class="req">*</span></label>
+          <select id="book-select" name="bookId" required aria-describedby="err-book-select">
+            <option value="">-- Choose an available book --</option>
+          </select>
+          <span id="err-book-select" class="field-error" aria-live="polite"></span>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="borrower-name">Borrower Full Name (First &amp; Last Name) <span class="req">*</span></label>
+            <input
+              type="text"
+              id="borrower-name"
+              name="borrowerName"
+              placeholder="e.g., Clarisse Mendoza"
+              required
+              aria-describedby="err-borrower-name"
+            />
+            <span id="err-borrower-name" class="field-error" aria-live="polite"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="borrower-id">Student / Library ID <span class="req">*</span></label>
+            <input
+              type="text"
+              id="borrower-id"
+              name="borrowerId"
+              placeholder="Format: YYYY-XXXX (e.g., 2026-1042)"
+              required
+              aria-describedby="err-borrower-id"
+            />
+            <span id="err-borrower-id" class="field-error" aria-live="polite"></span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="borrower-email">Email Address (Gmail, Yahoo, Outlook, or .edu.ph) <span class="req">*</span></label>
+          <input
+            type="email"
+            id="borrower-email"
+            name="borrowerEmail"
+            placeholder="e.g., clarisse.mendoza@gmail.com or @yahoo.com"
+            required
+            aria-describedby="err-borrower-email"
+          />
+          <span id="err-borrower-email" class="field-error" aria-live="polite"></span>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="borrow-date">Borrow Date <span class="req">*</span></label>
+            <input type="date" id="borrow-date" name="borrowDate" required aria-describedby="err-borrow-date" />
+            <span id="err-borrow-date" class="field-error" aria-live="polite"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="due-date">Return Due Date (Max 14 Days) <span class="req">*</span></label>
+            <input type="date" id="due-date" name="dueDate" required aria-describedby="err-due-date" />
+            <span id="err-due-date" class="field-error" aria-live="polite"></span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="borrow-notes">Purpose / Remarks (Optional)</label>
+          <input type="text" id="borrow-notes" name="notes" placeholder="e.g., Capstone research or weekend reading" maxlength="120" />
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Confirm Borrow Transaction</button>
+          <button type="reset" id="reset-form-btn" class="btn btn-outline">Clear Form</button>
+        </div>
+      </form>
+
+      <aside class="card rules-card" aria-labelledby="rules-heading">
+        <div id="selected-book-preview" class="selected-book-preview" hidden>
+          <img id="preview-book-cover" src="Assets/Images/book-101.svg" alt="Selected book cover" />
+          <div>
+            <span class="category-tag">Selected Title</span>
+            <h3 id="preview-book-title" style="margin: 0.3rem 0 0.15rem; font-size: 1rem;">Book Title</h3>
+            <p id="preview-book-meta" style="margin: 0; font-size: 0.84rem; color: var(--color-text-muted);">Author</p>
+          </div>
+        </div>
+
+        <h2 id="rules-heading">Enforced Library Business Rules</h2>
+        <ul class="rules-list">
+          <li><strong>Full Name Required:</strong> Single-word names are rejected; enter first and last name separated by a space.</li>
+          <li><strong>Verified Email Providers:</strong> Only valid <code>@gmail.com</code>, <code>@yahoo.com</code>, <code>@outlook.com</code>, or <code>.edu.ph</code> emails are accepted.</li>
+          <li><strong>No Past Dates &amp; 14-Day Cap:</strong> Borrow date cannot be in the past, and due date must be within 14 calendar days.</li>
+          <li><strong>Real-Time Stock &amp; Loan Limits:</strong> Out-of-stock books cannot be borrowed, and each ID is limited to 3 active books (no duplicate titles).</li>
+        </ul>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>LibriBloom &mdash; Curated Library Management Prototype (HTML5, CSS3, JavaScript, localStorage &amp; JSON).</p>
+    </div>
+  </footer>
+
+  <script src="JavaScript/data.js"></script>
+  <script src="JavaScript/storage.js"></script>
+  <script src="JavaScript/validation.js"></script>
+  <script src="JavaScript/app.js"></script>
+</body>
+</html>
