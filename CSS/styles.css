@@ -1,12 +1,6 @@
-/* ==========================================================================
-   LibriBloom Stylesheet — Boutique Pink Edition
-   Semantic, WCAG AA Accessible, Responsive, Animated & Print-Ready
-   ========================================================================== */
-
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Quicksand:wght@600;700&display=swap");
 
 :root {
-  /* Boutique Pink & Berry Palette */
   --color-bg: #fff8fa;
   --color-bg-accent: #ffeef4;
   --color-surface: #ffffff;
@@ -14,17 +8,14 @@
   --color-border: #f9a8d4;
   --color-border-light: #fce7f3;
 
-  /* High-Contrast Typography Colors */
   --color-text: #3b0722;
   --color-text-muted: #703652;
 
-  /* Primary Rose & Secondary Mauve Accents */
   --color-primary: #db2777;
   --color-primary-hover: #be185d;
   --color-primary-soft: #fce7f3;
   --color-secondary: #9d174d;
 
-  /* Semantic Status Colors */
   --color-success: #047857;
   --color-success-soft: #d1fae5;
   --color-warning: #9a3412;
@@ -32,7 +23,6 @@
   --color-danger: #be123c;
   --color-danger-soft: #ffe4e6;
 
-  /* Radii, Shadows & Fonts */
   --radius-sm: 10px;
   --radius-md: 16px;
   --radius-lg: 24px;
@@ -86,9 +76,7 @@ h1, h2, h3, h4, .brand-title {
   padding: 0 1.25rem;
 }
 
-/* ==========================================================================
-   Cute Page-Transition Loader Overlay
-   ========================================================================== */
+/*Page-Transition Loader Overlay*/
 .page-loader {
   position: fixed;
   inset: 0;
@@ -202,9 +190,7 @@ h1, h2, h3, h4, .brand-title {
   100% { background-color: transparent; }
 }
 
-/* ==========================================================================
-   Header & Navigation
-   ========================================================================== */
+/*Header & Nav*/
 .site-header {
   position: sticky;
   top: 0;
@@ -303,9 +289,7 @@ h1, h2, h3, h4, .brand-title {
   cursor: pointer;
 }
 
-/* ==========================================================================
-   Toast Notification Banner
-   ========================================================================== */
+/*Notification Banner*/
 .toast-banner {
   position: fixed;
   bottom: 1.35rem;
@@ -332,9 +316,7 @@ h1, h2, h3, h4, .brand-title {
   border: 1px solid #fda4af;
 }
 
-/* ==========================================================================
-   Main Content & Page Headers
-   ========================================================================== */
+/*Main Content & Page Headers*/
 .main-content {
   flex: 1;
   padding-top: 1.5rem;
@@ -390,9 +372,6 @@ h1, h2, h3, h4, .brand-title {
   font-size: 0.98rem;
 }
 
-/* ==========================================================================
-   Dashboard Hero, Photos & KPI Cards
-   ========================================================================== */
 .hero-card {
   display: grid;
   grid-template-columns: 1.5fr 0.9fr;
@@ -572,9 +551,7 @@ h1, h2, h3, h4, .brand-title {
   border: 2px solid var(--color-primary-soft);
 }
 
-/* ==========================================================================
-   Buttons
-   ========================================================================== */
+/*Buttons*/
 .btn {
   display: inline-flex;
   align-items: center;
@@ -647,9 +624,7 @@ h1, h2, h3, h4, .brand-title {
   cursor: not-allowed;
 }
 
-/* ==========================================================================
-   Filter Bars & Inputs
-   ========================================================================== */
+/*Filter Bars & Inputs*/
 .filter-bar {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
@@ -701,9 +676,6 @@ select.invalid {
   background: #fff5f7;
 }
 
-/* ==========================================================================
-   Realistic Boutique Library Bookshelves (catalog.html)
-   ========================================================================== */
 .bookcase-frame {
   background: linear-gradient(180deg, #fff5f8 0%, #ffe9f1 100%);
   border: 2px solid #f9a8d4;
@@ -893,9 +865,7 @@ select.invalid {
   color: var(--color-danger);
 }
 
-/* ==========================================================================
-   Transaction Form & Business Rules (borrow.html)
-   ========================================================================== */
+/*Transaction Form*/
 .two-col-layout {
   display: grid;
   grid-template-columns: 1.6fr 1fr;
@@ -986,9 +956,7 @@ select.invalid {
   flex-shrink: 0;
 }
 
-/* ==========================================================================
-   Receipt Summary (receipt.html)
-   ========================================================================== */
+/*Receipt Summary*/
 .receipt-toolbar {
   display: flex;
   align-items: center;
@@ -1100,9 +1068,7 @@ select.invalid {
   color: var(--color-text-muted);
 }
 
-/* ==========================================================================
-   Records Management Table & Edit Modal (records.html)
-   ========================================================================== */
+/*Records Management Table & Edit*/
 .data-tools {
   display: flex;
   flex-wrap: wrap;
@@ -1164,7 +1130,7 @@ select.invalid {
   gap: 0.35rem;
 }
 
-/* Edit Borrower Modal */
+/*Edit Borrower Modal*/
 .modal-backdrop {
   position: fixed;
   inset: 0;
@@ -1242,9 +1208,7 @@ select.invalid {
   to { opacity: 1; }
 }
 
-/* ==========================================================================
-   About & Help
-   ========================================================================== */
+/*About & Help*/
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1276,9 +1240,7 @@ select.invalid {
   color: var(--color-text-muted);
 }
 
-/* ==========================================================================
-   Customized Print Receipt Layout
-   ========================================================================== */
+/*Print Receipt*/
 #print-slip-container {
   display: none;
 }
@@ -1573,9 +1535,7 @@ select.invalid {
   }
 }
 
-/* ==========================================================================
-   Responsive Breakpoints: Tablet (<= 1024px) & Mobile (<= 768px)
-   ========================================================================== */
+/*Responsive Breakpoints: Tablet*/
 @media (max-width: 1024px) {
   .hero-card {
     grid-template-columns: 1fr;
