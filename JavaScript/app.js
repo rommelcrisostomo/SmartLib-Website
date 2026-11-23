@@ -67,7 +67,7 @@ const PrintReceiptService = {
     }
 
     const matchedBook = books.find((b) => b.id === record.bookId);
-    const coverSrc = escapeHtml(matchedBook?.coverImage || "Assets/Images/book-101.png");
+    const coverSrc = escapeHtml(matchedBook?.coverImage || "Assets/Images/book-101.svg");
     const authorName = escapeHtml(matchedBook?.author || "LibriBloom Collection");
     const categoryName = escapeHtml(matchedBook?.category || "Library Shelf");
     const loanDays = calculateDaysBetween(record.borrowDate, record.dueDate);
