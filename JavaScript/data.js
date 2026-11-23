@@ -12,7 +12,7 @@ const SAMPLE_BOOKS_JSON = [
     category: "Software Engineering",
     totalCopies: 3,
     availableCopies: 3,
-    coverImage: "Assets/Images/book-101.svg"
+    coverImage: "Assets/Images/book-101.png"
   },
   {
     id: "BK-102",
@@ -22,7 +22,7 @@ const SAMPLE_BOOKS_JSON = [
     category: "Computer Science",
     totalCopies: 4,
     availableCopies: 3,
-    coverImage: "Assets/Images/book-102.svg"
+    coverImage: "Assets/Images/book-102.png"
   },
   {
     id: "BK-103",
@@ -32,7 +32,7 @@ const SAMPLE_BOOKS_JSON = [
     category: "Computer Science",
     totalCopies: 2,
     availableCopies: 2,
-    coverImage: "Assets/Images/book-103.svg"
+    coverImage: "Assets/Images/book-103.png"
   },
   {
     id: "BK-104",
@@ -42,7 +42,7 @@ const SAMPLE_BOOKS_JSON = [
     category: "Information Systems",
     totalCopies: 2,
     availableCopies: 1,
-    coverImage: "Assets/Images/book-104.svg"
+    coverImage: "Assets/Images/book-104.png"
   },
   {
     id: "BK-105",
@@ -52,7 +52,7 @@ const SAMPLE_BOOKS_JSON = [
     category: "Data Science",
     totalCopies: 1,
     availableCopies: 0,
-    coverImage: "Assets/Images/book-105.svg"
+    coverImage: "Assets/Images/book-105.png"
   },
   {
     id: "BK-106",
@@ -62,7 +62,7 @@ const SAMPLE_BOOKS_JSON = [
     category: "General Fiction",
     totalCopies: 3,
     availableCopies: 3,
-    coverImage: "Assets/Images/book-106.svg"
+    coverImage: "Assets/Images/book-106.png"
   }
 ];
 
