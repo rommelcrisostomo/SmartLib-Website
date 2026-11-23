@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 340" width="240" height="340">
+  <defs>
+    <linearGradient id="g101" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#9d174d" />
+      <stop offset="100%" stop-color="#db2777" />
+    </linearGradient>
+  </defs>
+  <rect width="240" height="340" rx="10" fill="url(#g101)" />
+  <rect x="0" y="0" width="16" height="340" fill="rgba(0,0,0,0.22)" />
+  <rect x="26" y="22" width="192" height="296" rx="6" fill="none" stroke="#fbcfe8" stroke-width="1.5" stroke-opacity="0.65" />
+  <circle cx="122" cy="118" r="44" fill="rgba(255,255,255,0.14)" />
+  <rect x="98" y="94" width="48" height="48" rx="8" fill="none" stroke="#ffffff" stroke-width="3" />
+  <path d="M110 118h24M122 106v24" stroke="#fbcfe8" stroke-width="3" stroke-linecap="round" />
+  <text x="122" y="205" fill="#ffffff" font-family="Georgia, serif" font-size="18" font-weight="bold" text-anchor="middle">CLEAN</text>
+  <text x="122" y="227" fill="#ffffff" font-family="Georgia, serif" font-size="17" font-weight="bold" text-anchor="middle">ARCHITECTURE</text>
+  <text x="122" y="255" fill="#fbcfe8" font-family="sans-serif" font-size="11" letter-spacing="2" text-anchor="middle">ELENA VANCE</text>
+</svg>
