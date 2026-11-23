@@ -1,16 +1,3 @@
-/**
- * js/app.js
- * Complete application controller for LibriBloom:
- * - Shared mobile navigation & cute page-turning transition loader
- * - Unfinished borrow form confirmation guard
- * - Customized official print receipt generator (PrintReceiptService)
- * - Dashboard live KPI summary (index.html)
- * - 3D Library Bookshelf grouping & filtering (catalog.html)
- * - Validated Borrow Form with strict full-name & email checks (borrow.html)
- * - Printable Receipt Summary with book cover & stamp (receipt.html)
- * - Records Management with instant auto-updating Edit Borrower modal (records.html)
- */
-
 window.hasUnsavedBorrowForm = false;
 
 function escapeHtml(str) {
@@ -51,9 +38,7 @@ window.addEventListener("beforeunload", (e) => {
   }
 });
 
-/* ==========================================================================
-   CUSTOMIZED PRINT RECEIPT GENERATOR (Shared by records.html & receipt.html)
-   ========================================================================== */
+/*Print Receipt Generator*/
 const PrintReceiptService = {
   print(record, books) {
     if (!record) return;
@@ -229,9 +214,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (currentPage === "records") initRecordsPage(showToast);
 });
 
-/* ==========================================================================
-   PAGE 1: DASHBOARD CONTROLLER (index.html)
-   ========================================================================== */
+/*Dashboard Controls*/
 function initDashboardPage() {
   const books = StorageService.getBooks();
   const records = StorageService.getRecords();
@@ -247,9 +230,7 @@ function initDashboardPage() {
   document.getElementById("stat-returned-books").textContent = returnedBooks;
 }
 
-/* ==========================================================================
-   PAGE 2: LIBRARY BOOKSHELF CATALOG CONTROLLER (catalog.html)
-   ========================================================================== */
+/*Catalog Controls*/
 function initCatalogPage() {
   const books = StorageService.getBooks();
   const catalogSearch = document.getElementById("catalog-search");
@@ -370,9 +351,7 @@ function initCatalogPage() {
   renderCatalog();
 }
 
-/* ==========================================================================
-   PAGE 3: BORROW TRANSACTION FORM CONTROLLER (borrow.html)
-   ========================================================================== */
+/*Borrow Transaction Form*/
 function initBorrowPage(showToast) {
   const books = StorageService.getBooks();
   const records = StorageService.getRecords();
@@ -484,7 +463,7 @@ function initBorrowPage(showToast) {
     }
   });
 
-  // Live Email Validation on Blur
+  // Live Email Validation
   borrowerEmailInput.addEventListener("blur", () => {
     const emailVal = borrowerEmailInput.value.trim();
     const errSpan = document.getElementById("err-borrower-email");
@@ -619,9 +598,7 @@ function initBorrowPage(showToast) {
   });
 }
 
-/* ==========================================================================
-   PAGE 4: RECEIPT SUMMARY CONTROLLER (receipt.html)
-   ========================================================================== */
+/*Receipt Summary*/
 function initReceiptPage() {
   const books = StorageService.getBooks();
   const records = StorageService.getRecords();
@@ -690,9 +667,7 @@ function initReceiptPage() {
   renderReceipt(initialRef);
 }
 
-/* ==========================================================================
-   PAGE 5: RECORDS MANAGEMENT CONTROLLER (records.html)
-   ========================================================================== */
+/*Records Management*/
 function initRecordsPage(showToast) {
   let books = StorageService.getBooks();
   let records = StorageService.getRecords();
@@ -749,7 +724,6 @@ function initRecordsPage(showToast) {
     clearEditValidationUI();
   }
 
-  // Real-time blur validation inside Edit Modal
   editNameInput.addEventListener("blur", () => {
     const errSpan = document.getElementById("err-edit-borrower-name");
     const msg = validateFullName(editNameInput.value);
@@ -777,7 +751,7 @@ function initRecordsPage(showToast) {
     }
   });
 
-  // Save Changes -> Immediately Persist to localStorage & Auto-Update Records Table
+  // Save Changes 
   editForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const ref = editRefInput.value;
@@ -829,7 +803,6 @@ function initRecordsPage(showToast) {
     StorageService.saveRecords(records);
     StorageService.setLastReceipt(ref);
 
-    // If an active search filter would hide the newly renamed record, clear search so update is visible
     const activeQuery = recordsSearch.value.trim().toLowerCase();
     if (activeQuery) {
       const updatedRec = records[recordIndex];
@@ -843,7 +816,6 @@ function initRecordsPage(showToast) {
       }
     }
 
-    // Close modal, re-render the records table automatically, and highlight updated row
     highlightedRef = ref;
     closeEditModal();
     renderRecords();
@@ -932,7 +904,6 @@ function initRecordsPage(showToast) {
       recordsTbody.appendChild(tr);
     });
 
-    // Clear one-time highlight flag after painting
     highlightedRef = "";
   }
 
