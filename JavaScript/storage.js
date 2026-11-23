@@ -1,8 +1,3 @@
-/**
- * js/storage.js
- * Handles localStorage persistence with defensive error recovery and JSON export/import.
- */
-
 const STORAGE_KEYS = {
   BOOKS: "libribloom_books_v1",
   RECORDS: "libribloom_records_v1",
