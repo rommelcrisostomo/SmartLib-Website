@@ -1,10 +1,3 @@
-/**
- * js/validation.js
- * Validates form inputs, enforces multi-word borrower full names (requires a space),
- * verifies genuine email domains (Gmail, Yahoo, Outlook, .edu),
- * and checks library business rules against saved records.
- */
-
 function getTodayLocalISO() {
   const now = new Date();
   const yyyy = now.getFullYear();
@@ -19,9 +12,6 @@ function calculateDaysBetween(startISO, endISO) {
   return Math.round((end - start) / (1000 * 60 * 60 * 24));
 }
 
-/**
- * Enforces a multi-word full name separated by at least one space (rejects single-word names).
- */
 function validateFullName(rawName) {
   const normalized = String(rawName || "").trim().replace(/\s+/g, " ");
 
@@ -75,10 +65,6 @@ function validateFullName(rawName) {
   return "";
 }
 
-/**
- * Validates that an email address belongs to a legitimate provider (e.g., Gmail, Yahoo)
- * and rejects nonsense usernames or fake domains.
- */
 function validateGenuineEmail(email) {
   const cleanEmail = String(email || "").trim();
   if (!cleanEmail) {
